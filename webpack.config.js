@@ -1,5 +1,7 @@
+require('dotenv').config()
 const path = require("path");
 const webpack = require("webpack");
+const Dotenv = require('dotenv-webpack');
 require("babel-polyfill");
 
 module.exports = {
@@ -31,5 +33,9 @@ module.exports = {
     publicPath: "http://localhost:3000/dist/",
     hotOnly: true
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [new webpack.HotModuleReplacementPlugin(),
+    new Dotenv({
+      path: path.join(__dirname, '.env'),
+      systemvars: true
+    })]
 };

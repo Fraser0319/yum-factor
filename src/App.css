@@ -1,6 +1,6 @@
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .App {
@@ -21,4 +21,9 @@ body {
 
 .App-link {
   color: #61dafb;
+}
+
+.topBar {
+  margin: 0;
+  padding: 0;
 }

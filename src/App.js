@@ -1,15 +1,15 @@
 import React, { Component} from "react";
 import {hot} from "react-hot-loader";
 import TopBar from "./components/TopBar";
-import CakeCard from "./components/CakeCard";
+import CakeFeed from "./containers/CakeFeed";
 import "./App.css";
 
 class App extends Component{
-  render(){
+  render() {
     return(
       <div className="App">
         <TopBar />
-        <CakeCard />
+        <CakeFeed />
       </div>
     );
   }

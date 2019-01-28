@@ -14,20 +14,21 @@ class CakeCard extends React.Component {
       <Card className="cakeCard">
         <CardActionArea>
           <CardMedia
-            image="images/unicorn.png"
+            image={this.props.imageUrl}
             title="Unicorn Cake"
-            style={{height: 160}}
+            style={{height: 180}}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              Cake
+              {this.props.name}
             </Typography>
-            <Typography component="p">Unicorn cake</Typography>
+            <Typography component="p">{this.props.comment}</Typography>
+            <Typography component="p">{this.props.yumFactor} / 5</Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
-            Comment
+            Comments
           </Button>
         </CardActions>
       </Card>

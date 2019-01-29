@@ -2,6 +2,7 @@ import React from 'react';
 import CakeCard from '../components/CakeCard';
 import { getCake } from '../actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const mapStateToProps = state => ({
   cakes: state.cakes

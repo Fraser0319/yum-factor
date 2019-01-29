@@ -5,6 +5,7 @@ import CakeFeed from './containers/CakeFeed';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import AddCake from './components/AddCake';
+import ViewCake from './components/ViewCake';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <TopBar />
           <Route path="/" exact component={CakeFeed} />
           <Route path="/add-cake" component={AddCake} />
+          <Route path="/cake" component={ViewCake} />
         </div>
       </Router>
     );

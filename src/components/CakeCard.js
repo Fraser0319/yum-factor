@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 import './../Card.css';
 
 class CakeCard extends React.Component {
@@ -13,17 +14,19 @@ class CakeCard extends React.Component {
     return (
       <Card className="cakeCard">
         <CardActionArea>
-          <CardMedia image={this.props.imageUrl} style={{ height: 180 }} />
+          <CardMedia image={this.props.cake.imageUrl} style={{ height: 180 }} />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {this.props.name}
+              {this.props.cake.name}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            View {this.props.name}
-          </Button>
+          <Link to="/cake" style={{ textDecoration: 'none' }}>
+            <Button size="small" color="primary">
+              View {this.props.cake.name}
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     );

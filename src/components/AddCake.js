@@ -37,8 +37,8 @@ class AddCake extends React.Component {
 
     const response = await fetch(request);
     const result = await response.json();
-console.log(result);
-    this.props.history.push('/')
+    console.log(result);
+    this.props.history.push('/');
 
     // once done redirect to the home page.
   }
@@ -61,74 +61,74 @@ console.log(result);
 
   render() {
     return (
-    <form onSubmit={this.handleSubmit}>
-      <Card className="cakeCard">
-        <CardContent>
-          <Typography variant="h5" component="h2">
-            Add a new cake
-          </Typography>
-          <TextField
-            id="outlined-full-width"
-            label="Cake Name"
-            style={{ margin: 8 }}
-            placeholder="Cake Name"
-            fullWidth
-            margin="normal"
-            variant="outlined"
-            InputLabelProps={{
-              shrink: true
-            }}
-            value={this.state.cakeName}
-            onChange={this.handleChangeCakeName}
-          />
-          <TextField
-            id="outlined-full-width"
-            label="Comment"
-            style={{ margin: 8 }}
-            placeholder="Comment"
-            fullWidth
-            margin="normal"
-            variant="outlined"
-            InputLabelProps={{
-              shrink: true
-            }}
-            value={this.state.comment}
-            onChange={this.handleChangeComment}
-          />
-          <TextField
-            id="outlined-full-width"
-            label="Yum Factor"
-            style={{ margin: 8 }}
-            placeholder="Yum Factor"
-            fullWidth
-            margin="normal"
-            variant="outlined"
-            InputLabelProps={{
-              shrink: true
-            }}
-            value={this.state.yumFactor}
-            onChange={this.handleChangeYumFactor}
-          />
-          <TextField
-            id="outlined-full-width"
-            label="Image URL"
-            style={{ margin: 8 }}
-            placeholder="Image URL"
-            fullWidth
-            margin="normal"
-            variant="outlined"
-            InputLabelProps={{
-              shrink: true
-            }}
-            value={this.state.imageUrl}
-            onChange={this.handleChangeImageUrl}
-          />
-        </CardContent>
-        <CardActions>
-        <Button type="submit" >Add Cake</Button>
-          <Link to="/">Back</Link>
-        </CardActions>
-      </Card>
+      <form onSubmit={this.handleSubmit}>
+        <Card className="cakeCard">
+          <CardContent>
+            <Typography variant="h5" component="h2">
+              Add a new cake
+            </Typography>
+            <TextField
+              id="outlined-full-width"
+              label="Cake Name"
+              style={{ margin: 8 }}
+              placeholder="Cake Name"
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true
+              }}
+              value={this.state.cakeName}
+              onChange={this.handleChangeCakeName}
+            />
+            <TextField
+              id="outlined-full-width"
+              label="Comment"
+              style={{ margin: 8 }}
+              placeholder="Comment"
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true
+              }}
+              value={this.state.comment}
+              onChange={this.handleChangeComment}
+            />
+            <TextField
+              id="outlined-full-width"
+              label="Yum Factor"
+              style={{ margin: 8 }}
+              placeholder="Yum Factor"
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true
+              }}
+              value={this.state.yumFactor}
+              onChange={this.handleChangeYumFactor}
+            />
+            <TextField
+              id="outlined-full-width"
+              label="Image URL"
+              style={{ margin: 8 }}
+              placeholder="Image URL"
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true
+              }}
+              value={this.state.imageUrl}
+              onChange={this.handleChangeImageUrl}
+            />
+          </CardContent>
+          <CardActions>
+            <Button size="small" color="primary" type="submit">Add Cake</Button>
+            <Link to="/" style={{textDecoration: 'none'}}><Button size="small" color="primary">Back</Button></Link>
+          </CardActions>
+        </Card>
       </form>
     );
   }

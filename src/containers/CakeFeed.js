@@ -3,6 +3,8 @@ import CakeCard from '../components/CakeCard';
 import { getCake } from '../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 
 const mapStateToProps = state => ({
   cakes: state.cakes
@@ -19,15 +21,14 @@ class CakeFeed extends React.Component {
   render() {
     return (
       <div>
-      <Link to="/add-cake">add cake</Link>
+      <Link to="/add-cake" style={{textDecoration: 'none'}}>
+      <Button size="large"  color="primary">Add New Cake</Button>
+      </Link>
         {this.props.cakes[0] &&
           this.props.cakes[0].map(cake => {
             return (
               <CakeCard
-                name={cake.name}
-                comment={cake.comment}
-                yumFactor={cake.yumFactor}
-                imageUrl={cake.imageUrl}
+                cake={cake}
               />
             );
           })}

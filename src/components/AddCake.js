@@ -9,8 +9,59 @@ import TextField from '@material-ui/core/TextField';
 import './../Card.css';
 
 class AddCake extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { cakeName: '', comment: '', yumFactor: '', imageUrl: '' };
+
+    this.handleChangeCakeName = this.handleChangeCakeName.bind(this);
+    this.handleChangeComment = this.handleChangeComment.bind(this);
+    this.handleChangeYumFactor = this.handleChangeYumFactor.bind(this);
+    this.handleChangeImageUrl = this.handleChangeImageUrl.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  async handleSubmit(event) {
+    event.preventDefault();
+    const request = new Request(process.env.ADD_NEW_CAKE_API_URL, {
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      body: JSON.stringify({
+        name: this.state.cakeName,
+        comment: this.state.comment,
+        imageUrl:
+          'https://img.taste.com.au/9isesBer/taste/2016/11/caramello-cake-105070-1.jpeg',
+        yumFactor: this.state.yumFactor
+      })
+    });
+
+    const response = await fetch(request);
+    const result = await response.json();
+console.log(result);
+    this.props.history.push('/')
+
+    // once done redirect to the home page.
+  }
+
+  handleChangeCakeName(event) {
+    this.setState({ cakeName: event.target.value });
+  }
+
+  handleChangeComment(event) {
+    this.setState({ comment: event.target.value });
+  }
+
+  handleChangeYumFactor(event) {
+    this.setState({ yumFactor: event.target.value });
+  }
+
+  handleChangeImageUrl(event) {
+    this.setState({ imageUrl: event.target.value });
+  }
+
   render() {
     return (
+    <form onSubmit={this.handleSubmit}>
       <Card className="cakeCard">
         <CardContent>
           <Typography variant="h5" component="h2">
@@ -27,6 +78,8 @@ class AddCake extends React.Component {
             InputLabelProps={{
               shrink: true
             }}
+            value={this.state.cakeName}
+            onChange={this.handleChangeCakeName}
           />
           <TextField
             id="outlined-full-width"
@@ -39,6 +92,8 @@ class AddCake extends React.Component {
             InputLabelProps={{
               shrink: true
             }}
+            value={this.state.comment}
+            onChange={this.handleChangeComment}
           />
           <TextField
             id="outlined-full-width"
@@ -51,6 +106,8 @@ class AddCake extends React.Component {
             InputLabelProps={{
               shrink: true
             }}
+            value={this.state.yumFactor}
+            onChange={this.handleChangeYumFactor}
           />
           <TextField
             id="outlined-full-width"
@@ -63,13 +120,16 @@ class AddCake extends React.Component {
             InputLabelProps={{
               shrink: true
             }}
+            value={this.state.imageUrl}
+            onChange={this.handleChangeImageUrl}
           />
         </CardContent>
         <CardActions>
-          <Button size="small">Add Cake</Button>
+        <Button type="submit" >Add Cake</Button>
           <Link to="/">Back</Link>
         </CardActions>
       </Card>
+      </form>
     );
   }
 }

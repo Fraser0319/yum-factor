@@ -9,9 +9,7 @@ const mapStateToProps = state => ({
 
 class CakeFeed extends React.Component {
   async componentDidMount() {
-    let response = await fetch(
-      process.env.GET_CAKES_API_URL
-    );
+    let response = await fetch(process.env.GET_CAKES_API_URL);
     let json = await response.json();
 
     this.props.dispatch(getCake(json));
@@ -20,6 +18,7 @@ class CakeFeed extends React.Component {
   render() {
     return (
       <div>
+      <Link to="/add-cake">add cake</Link>
         {this.props.cakes[0] &&
           this.props.cakes[0].map(cake => {
             return (

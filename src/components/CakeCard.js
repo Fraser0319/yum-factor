@@ -10,6 +10,10 @@ import { Link } from 'react-router-dom';
 import './../Card.css';
 
 class CakeCard extends React.Component {
+  constructor(props){
+    super(props);
+
+  }
   render() {
     return (
       <Card className="cakeCard">
@@ -22,7 +26,7 @@ class CakeCard extends React.Component {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Link to="/cake" style={{ textDecoration: 'none' }}>
+          <Link to={`/cake/${this.props.cake._id}`}style={{ textDecoration: 'none' }}>
             <Button size="small" color="primary">
               View {this.props.cake.name}
             </Button>

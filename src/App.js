@@ -15,7 +15,7 @@ class App extends Component {
           <TopBar />
           <Route path="/" exact component={CakeFeed} />
           <Route path="/add-cake" component={AddCake} />
-          <Route path="/cake" component={ViewCake} />
+          <Route path="/cake/:id" component={ViewCake} />
         </div>
       </Router>
     );

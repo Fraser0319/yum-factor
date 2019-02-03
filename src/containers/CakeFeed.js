@@ -4,7 +4,8 @@ import { getCakes } from '../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
 function mapStateToProps(state) {
   const { cakeList } = state.cakes;
@@ -14,24 +15,45 @@ function mapStateToProps(state) {
 }
 
 class CakeFeed extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {loading: true}
+    this.setLoading = this.setLoading.bind(this);
+  }
+
+  setLoading(loadingState){
+    this.setState({
+      loading: loadingState
+    })
+  }
   async componentDidMount() {
     await this.props.dispatch(getCakes());
+    this.setLoading(false);
   }
 
   render() {
-    return (
-      <div>
-        <Link to="/add-cake" style={{ textDecoration: 'none' }}>
-          <Button size="large" color="primary">
-            Add New Cake
-          </Button>
-        </Link>
-        {this.props.allCakes &&
-          this.props.allCakes.map(cake => {
-            return <CakeCard cake={cake} />;
-          })}
-      </div>
-    );
+    let template;
+    if (!this.state.loading) {
+      template = (
+        <div>
+          <Link to="/add-cake" style={{ textDecoration: 'none' }}>
+            <Button size="large" color="primary">
+              Add New Cake
+            </Button>
+          </Link>
+          {
+            this.props.allCakes &&
+              this.props.allCakes.map(cake => {
+                return <CakeCard key={cake._id} cake={cake} />;
+              })
+          }
+        </div>
+      );
+      
+    } else {
+      template = <FontAwesomeIcon icon={faCircleNotch} spin size="4x" />;
+    }
+    return <div>{template}</div>;
   }
 }
 

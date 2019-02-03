@@ -61,7 +61,6 @@ class ViewCake extends React.Component {
               </Link>
             </CardActions>
           </Card>
-          <FontAwesomeIcon icon={faCircleNotch} spin size="4x"/>
         </div>
       );
     } else {

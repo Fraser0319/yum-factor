@@ -10,6 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import { getCakes, filterCakes, setTitle } from '../actions';
 import { connect } from 'react-redux';
+import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 
 const styles = theme => ({
   root: {
@@ -23,10 +24,8 @@ const styles = theme => ({
     marginRight: 20
   },
   title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block'
-    }
+    display: 'block',
+    width: 400
   },
   search: {
     position: 'relative',
@@ -62,11 +61,9 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 10,
     transition: theme.transitions.create('width'),
     width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 120,
-      '&:focus': {
-        width: 200
-      }
+    width: 100,
+    '&:focus': {
+      width: 400
     }
   }
 });
@@ -108,13 +105,14 @@ class TopBar extends React.Component {
               variant="h6"
               color="inherit"
               noWrap
+              align="left"
             >
               {this.props.appBarTitle}
             </Typography>
 
             <div className={this.props.classes.grow} />
             <div className={this.props.classes.search}>
-              {this.props.appBarTitle  === "Cake App" && (
+              {this.props.appBarTitle === 'Cake App' && (
                 <div>
                   <div className={this.props.classes.searchIcon}>
                     <SearchIcon />

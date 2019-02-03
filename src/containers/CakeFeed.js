@@ -5,9 +5,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
-// const mapStateToProps = state => ({
-//   cakes: state.cakes.cakeList
-// });
 
 function mapStateToProps(state) {
   const { cakeList } = state.cakes;

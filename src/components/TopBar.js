@@ -8,39 +8,39 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import { getCakes, filterCakes } from '../actions';
+import { getCakes, filterCakes, setTitle } from '../actions';
 import { connect } from 'react-redux';
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    width: '100%'
   },
   grow: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20,
+    marginRight: 20
   },
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+      display: 'block'
+    }
   },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade(theme.palette.common.white, 0.25)
     },
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing.unit,
-      width: 'auto',
-    },
+      width: 'auto'
+    }
   },
   searchIcon: {
     width: theme.spacing.unit * 9,
@@ -49,11 +49,11 @@ const styles = theme => ({
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   inputRoot: {
     color: 'inherit',
-    width: '100%',
+    width: '100%'
   },
   inputInput: {
     paddingTop: theme.spacing.unit,
@@ -65,33 +65,32 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       width: 120,
       '&:focus': {
-        width: 200,
-      },
-    },
-  },
+        width: 200
+      }
+    }
+  }
 });
 
 function mapStateToProps(state) {
-  const { cakeList } = state.cakes;
+  const { cakeList, title } = state.cakes;
   return {
-    allCakes: cakeList
+    allCakes: cakeList,
+    appBarTitle: title
   };
 }
 
 class TopBar extends React.Component {
-
   constructor(props) {
     super(props);
   }
 
-  async componentDidMount(){
+  async componentDidMount() {
     await this.props.dispatch(getCakes());
-    
   }
 
-  handleChange(e){
+  handleChange(e) {
     console.log(e.target.value);
-    if(e.target.value !== "") {
+    if (e.target.value !== '') {
       let inputChar = e.target.value;
       this.props.dispatch(filterCakes(inputChar));
     } else {
@@ -99,27 +98,37 @@ class TopBar extends React.Component {
     }
   }
 
-  render(){
+  render() {
     return (
       <div className={this.props.classes.root}>
         <AppBar position="sticky">
           <Toolbar>
-            <Typography className={this.props.classes.title} variant="h6" color="inherit" noWrap>
-              Cake App
+            <Typography
+              className={this.props.classes.title}
+              variant="h6"
+              color="inherit"
+              noWrap
+            >
+              {this.props.appBarTitle}
             </Typography>
+
             <div className={this.props.classes.grow} />
             <div className={this.props.classes.search}>
-              <div className={this.props.classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                onChange={this.handleChange.bind(this)}
-                placeholder="Search…"
-                classes={{
-                  root: this.props.classes.inputRoot,
-                  input: this.props.classes.inputInput,
-                }}
-              />
+              {this.props.appBarTitle  === "Cake App" && (
+                <div>
+                  <div className={this.props.classes.searchIcon}>
+                    <SearchIcon />
+                  </div>
+                  <InputBase
+                    onChange={this.handleChange.bind(this)}
+                    placeholder="Search…"
+                    classes={{
+                      root: this.props.classes.inputRoot,
+                      input: this.props.classes.inputInput
+                    }}
+                  />
+                </div>
+              )}
             </div>
           </Toolbar>
         </AppBar>
@@ -129,7 +138,7 @@ class TopBar extends React.Component {
 }
 
 TopBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps)(withStyles(styles)(TopBar));

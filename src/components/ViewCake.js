@@ -15,9 +15,10 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import './../Card.css';
 
 function mapStateToProps(state) {
-  const { cakeId, cakeList } = state.cakes;
+  const { cakeId, cakeList, title } = state.cakes;
   let selectedCake = {
-    currentCake: cakeList.find(cake => cake._id == cakeId)
+    currentCake: cakeList.find(cake => cake._id == cakeId),
+    title: title
   };
   return selectedCake;
 }
@@ -42,13 +43,13 @@ class ViewCake extends React.Component {
                 style={{ height: 180 }}
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography gutterBottom variant="h5" component="h2" align="left">
                   {this.props.currentCake.name}
                 </Typography>
-                <Typography color="textSecondary">
+                <Typography color="textSecondary" align="left">
                   Yum Factor {this.props.currentCake.yumFactor} / 5
                 </Typography>
-                <Typography color="textSecondary">
+                <Typography color="textSecondary" align="left">
                   {this.props.currentCake.comment}
                 </Typography>
               </CardContent>

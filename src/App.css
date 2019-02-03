@@ -27,3 +27,20 @@ body {
   margin: 0;
   padding: 0;
 }
+
+#cakeForm {
+  margin: 20px;
+}
+ #textInput {
+   margin-bottom: 10px;
+ }
+
+ .buttonGroup {
+   float: left;
+   margin-top: 20px; 
+ }
+
+ #backButton, #addButton {
+  margin-right: 10px;
+
+ }

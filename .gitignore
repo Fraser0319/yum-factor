@@ -62,3 +62,6 @@ typings/
 
 # zeit now env file
 now.json
+
+#build
+dist

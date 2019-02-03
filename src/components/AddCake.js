@@ -6,7 +6,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import { connect } from 'react-redux';
+
 import './../Card.css';
+import { setTitle } from '../actions';
 
 class AddCake extends React.Component {
   constructor(props) {
@@ -18,6 +21,8 @@ class AddCake extends React.Component {
     this.handleChangeYumFactor = this.handleChangeYumFactor.bind(this);
     this.handleChangeImageUrl = this.handleChangeImageUrl.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.props.dispatch(setTitle('Add A New Cake'));
   }
 
   async handleSubmit(event) {
@@ -134,4 +139,4 @@ class AddCake extends React.Component {
   }
 }
 
-export default AddCake;
+export  default connect()(AddCake);

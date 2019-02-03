@@ -42,5 +42,8 @@ body {
 
  #backButton, #addButton {
   margin-right: 10px;
+ }
 
+ .cakeDetails {
+   margin: 20px;
  }

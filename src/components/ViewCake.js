@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCake } from '../actions';
 import { getCakes } from '../actions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import './../Card.css';
 
 function mapStateToProps(state) {
@@ -36,32 +36,32 @@ class ViewCake extends React.Component {
     if (this.props.currentCake !== undefined) {
       template = (
         <div>
-          <Card className="cakeCard">
-            <CardActionArea>
-              <CardMedia
-                image={this.props.currentCake.imageUrl}
-                style={{ height: 180 }}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2" align="left">
-                  {this.props.currentCake.name}
-                </Typography>
-                <Typography color="textSecondary" align="left">
-                  Yum Factor {this.props.currentCake.yumFactor} / 5
-                </Typography>
-                <Typography color="textSecondary" align="left">
-                  {this.props.currentCake.comment}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Link to="/" style={{ textDecoration: 'none' }}>
-                <Button size="small" color="primary">
-                  Back
-                </Button>
-              </Link>
-            </CardActions>
-          </Card>
+          <CardMedia
+            image={this.props.currentCake.imageUrl}
+            style={{ height: 180 }}
+          />
+          <div className="cakeDetails">
+            <Typography
+              color="primary"
+              gutterBottom
+              variant="h5"
+              component="h2"
+              align="left"
+            >
+              {this.props.currentCake.name}
+            </Typography>
+            <Typography color="textSecondary" align="left">
+              {this.props.currentCake.comment}
+            </Typography>
+            <Typography color="textSecondary" align="left">
+              Yum Factor {this.props.currentCake.yumFactor} / 5
+            </Typography>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <Button size="small" color="primary">
+                Back
+              </Button>
+            </Link>
+          </div>
         </div>
       );
     } else {
@@ -71,11 +71,7 @@ class ViewCake extends React.Component {
         </div>
       );
     }
-    return (
-      <div>
-        {template}
-      </div>
-    );
+    return <div>{template}</div>;
   }
 }
 

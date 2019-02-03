@@ -18,9 +18,9 @@ class CakeCard extends React.Component {
     return (
       <Card className="cakeCard">
         <CardActionArea>
-          <CardMedia image={this.props.cake.imageUrl} style={{ height: 180 }} />
+          <CardMedia image={this.props.cake.imageUrl} style={{ height: 140 }} />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant="h5" component="h2" align="left">
               {this.props.cake.name}
             </Typography>
           </CardContent>
@@ -28,7 +28,7 @@ class CakeCard extends React.Component {
         <CardActions>
           <Link to={`/cake/${this.props.cake._id}`}style={{ textDecoration: 'none' }}>
             <Button size="small" color="primary">
-              View {this.props.cake.name}
+              View Details
             </Button>
           </Link>
         </CardActions>

@@ -6,7 +6,7 @@ const cakes = (
     case 'GET_CAKES':
       return Object.assign({}, state, {
         title: state.title,
-        cakeList: action.cakes
+        cakeList: action.cakes.reverse()
       });
     case 'GET_CAKE':
       return Object.assign({}, state, {

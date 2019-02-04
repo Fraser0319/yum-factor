@@ -65,7 +65,7 @@ class CakeFeed extends React.Component {
         </div>
       );
     } else {
-      template = <FontAwesomeIcon style={{ marginTop: '50%' }} icon={faCircleNotch} spin size="4x" />;
+      template = <FontAwesomeIcon style={{ marginTop: '25%' }} icon={faCircleNotch} spin size="4x" />;
     }
     return <div>{template}</div>;
   }

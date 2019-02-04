@@ -47,10 +47,16 @@ class ViewCake extends React.Component {
               {this.props.currentCake.name}
             </Typography>
             <Typography color="textSecondary" align="left">
+              <b>Comments</b>
+            </Typography>
+            <Typography color="textSecondary" align="left">
               {this.props.currentCake.comment}
             </Typography>
             <Typography color="textSecondary" align="left">
-              Yum Factor {this.props.currentCake.yumFactor} / 5
+            <b>Yum Factor</b> 
+            </Typography>
+            <Typography color="textSecondary" align="left">
+              {this.props.currentCake.yumFactor} / 5
             </Typography>
             <div className="buttonGroup">
               <Link to="/" style={{ textDecoration: 'none' }}>
@@ -65,7 +71,7 @@ class ViewCake extends React.Component {
     } else {
       template = (
         <div>
-          <FontAwesomeIcon icon={faCircleNotch} spin size="4x" />
+          <FontAwesomeIcon style={{ marginTop: '25%' }} icon={faCircleNotch} spin size="4x" />
         </div>
       );
     }

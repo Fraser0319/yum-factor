@@ -5,6 +5,7 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
 import { setTitle } from '../Actions/index';
+import './../App.css';
 
 function mapStateToProps(state) {
   const { title } = state.cakes;

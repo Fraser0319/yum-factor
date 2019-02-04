@@ -25,7 +25,6 @@ class ViewCake extends React.Component {
       await this.props.dispatch(getCakes());
     }
     await this.props.dispatch(getCake(this.props.match.params.id));
-
   }
 
   render() {
@@ -53,11 +52,13 @@ class ViewCake extends React.Component {
             <Typography color="textSecondary" align="left">
               Yum Factor {this.props.currentCake.yumFactor} / 5
             </Typography>
-            <Link to="/" style={{ textDecoration: 'none' }}>
-              <Button size="small" variant="contained" >
-                Back
-              </Button>
-            </Link>
+            <div className="buttonGroup">
+              <Link to="/" style={{ textDecoration: 'none' }}>
+                <Button id="backButton" size="small" variant="contained">
+                  Back
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       );

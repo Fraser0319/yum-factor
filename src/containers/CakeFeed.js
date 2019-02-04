@@ -1,14 +1,13 @@
 import React from 'react';
 import CakeCard from '../components/CakeCard';
-import { getCakes } from '../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import Fab from '@material-ui/core/Fab';
 import { withStyles } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
+import { getCakes, setTitle} from '../Actions/index';
 
 function mapStateToProps(state) {
   const { cakeList } = state.cakes;
@@ -36,6 +35,7 @@ class CakeFeed extends React.Component {
     super(props);
     this.state = { loading: true };
     this.setLoading = this.setLoading.bind(this);
+    this.props.dispatch(setTitle('Yum Factor'));
   }
 
   setLoading(loadingState) {
@@ -65,7 +65,7 @@ class CakeFeed extends React.Component {
         </div>
       );
     } else {
-      template = <FontAwesomeIcon icon={faCircleNotch} spin size="4x" />;
+      template = <FontAwesomeIcon style={{ marginTop: '50%' }} icon={faCircleNotch} spin size="4x" />;
     }
     return <div>{template}</div>;
   }

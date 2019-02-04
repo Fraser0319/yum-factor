@@ -1,17 +1,17 @@
 const cakes = (
-  state = { cakeList: [], cakeId: 0, inputChar: '', title: 'Cake App' },
+  state = { cakeList: [], cakeId: 0, inputChar: '', title: 'Yum Factor' },
   action
 ) => {
   switch (action.type) {
     case 'GET_CAKES':
       return Object.assign({}, state, {
-        title: "Cake App",
+        title: state.title,
         cakeList: action.cakes
       });
     case 'GET_CAKE':
       return Object.assign({}, state, {
         cakeId: action.id,
-        title: "Detailed View"
+        title: state.title
       });
     case 'FILTER_CAKES':
       return Object.assign({}, state, {

@@ -8,9 +8,8 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import { getCakes, filterCakes, setTitle } from '../actions';
+import { getCakes, filterCakes } from '../Actions/index';
 import { connect } from 'react-redux';
-import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 
 const styles = theme => ({
   root: {
@@ -86,7 +85,6 @@ class TopBar extends React.Component {
   }
 
   handleChange(e) {
-    console.log(e.target.value);
     if (e.target.value !== '') {
       let inputChar = e.target.value;
       this.props.dispatch(filterCakes(inputChar));
@@ -112,7 +110,7 @@ class TopBar extends React.Component {
 
             <div className={this.props.classes.grow} />
             <div className={this.props.classes.search}>
-              {this.props.appBarTitle === 'Cake App' && (
+              {this.props.appBarTitle === 'Yum Factor' && (
                 <div>
                   <div className={this.props.classes.searchIcon}>
                     <SearchIcon />

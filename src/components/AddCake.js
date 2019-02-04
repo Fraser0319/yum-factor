@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
-import { setTitle } from '../actions';
+import { setTitle } from '../Actions/index';
+
+function mapStateToProps(state) {
+  const { title } = state.cakes;
+    return {appBarTitle: title}
+}
 
 class AddCake extends React.Component {
   constructor(props) {
@@ -27,14 +31,18 @@ class AddCake extends React.Component {
     this.props.dispatch(setTitle('Add A New Cake'));
   }
 
-  validateForm() {
+  async validateForm() {
     let errorMessage = [];
     if (this.state.cakeName === '') {
       errorMessage.push('You must enter a cake name');
-      console.log(errorMessage);
     }
     if (this.state.yumFactor === '') {
       errorMessage.push('You must enter a yum factor');
+    }
+    if (this.state.imageUrl === ''){
+      this.setState({
+        imageUrl: "https://realfood.tesco.com/media/images/RFO-MedHeroCarousel-963x613-VicSponge-320cdbcb-d75b-4b53-80e8-07a523b7f36d-0-963x613.jpg"
+      })
     }
 
     if (errorMessage.length > 0) {
@@ -49,7 +57,7 @@ class AddCake extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    if (this.validateForm()) {
+    if (await this.validateForm()) {
       const request = new Request(process.env.ADD_NEW_CAKE_API_URL, {
         credentials: 'same-origin',
         headers: { 'Content-Type': 'application/json' },
@@ -57,15 +65,13 @@ class AddCake extends React.Component {
         body: JSON.stringify({
           name: this.state.cakeName,
           comment: this.state.comment,
-          imageUrl:
-            'https://img.taste.com.au/9isesBer/taste/2016/11/caramello-cake-105070-1.jpeg',
+          imageUrl: this.state.imageUrl,
           yumFactor: this.state.yumFactor
         })
       });
 
       const response = await fetch(request);
       const result = await response.json();
-      console.log(result);
       this.props.history.push('/');
     }
   }
@@ -126,6 +132,7 @@ class AddCake extends React.Component {
           label="Yum Factor"
           placeholder="Yum Factor"
           fullWidth
+          type="number"
           required
           margin="normal"
           InputLabelProps={{
@@ -167,4 +174,4 @@ class AddCake extends React.Component {
   }
 }
 
-export default connect()(AddCake);
+export default connect(mapStateToProps)(AddCake);

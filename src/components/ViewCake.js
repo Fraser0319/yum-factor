@@ -1,18 +1,13 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getCake } from '../actions';
-import { getCakes } from '../actions';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import './../Card.css';
+import { getCakes, getCake, setTitle } from '../Actions/index';
 
 function mapStateToProps(state) {
   const { cakeId, cakeList, title } = state.cakes;
@@ -25,10 +20,12 @@ function mapStateToProps(state) {
 
 class ViewCake extends React.Component {
   async componentWillMount() {
+    this.props.dispatch(setTitle('Detailed View'));
     if (this.props.currentCake == undefined) {
       await this.props.dispatch(getCakes());
     }
     await this.props.dispatch(getCake(this.props.match.params.id));
+
   }
 
   render() {
@@ -57,7 +54,7 @@ class ViewCake extends React.Component {
               Yum Factor {this.props.currentCake.yumFactor} / 5
             </Typography>
             <Link to="/" style={{ textDecoration: 'none' }}>
-              <Button size="small" color="primary">
+              <Button size="small" variant="contained" >
                 Back
               </Button>
             </Link>

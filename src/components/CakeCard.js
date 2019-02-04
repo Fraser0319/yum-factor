@@ -10,23 +10,23 @@ import { Link } from 'react-router-dom';
 import './../App.css';
 
 class CakeCard extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-
   }
   render() {
     return (
       <Card className="cakeCard">
-        <CardActionArea>
-          <CardMedia image={this.props.cake.imageUrl} style={{ height: 140 }} />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2" align="left">
-              {this.props.cake.name}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+        <CardMedia image={this.props.cake.imageUrl} style={{ height: 140 }} />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2" align="left">
+            {this.props.cake.name}
+          </Typography>
+        </CardContent>
         <CardActions>
-          <Link to={`/cake/${this.props.cake._id}`}style={{ textDecoration: 'none' }}>
+          <Link
+            to={`/cake/${this.props.cake._id}`}
+            style={{ textDecoration: 'none' }}
+          >
             <Button size="small" color="primary">
               View Details
             </Button>
